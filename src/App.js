@@ -11,7 +11,7 @@ import AppContext from './context/app/appContext'
 function App() {
   const appContext = useContext(AppContext)
 
-  const { getTasks, tasks } = appContext
+  const { getTasks, saveTasks, tasks } = appContext
 
   const [showAddTask, setShowAddTask] = useState(false)
 
@@ -32,9 +32,9 @@ function App() {
   useEffect(() => {
     // Only update after init load
     if (!initLoad) {
-      localStorage.setItem('tasks', JSON.stringify(tasks))
+      saveTasks()
     }
-  }, [tasks, initLoad])
+  }, [saveTasks, initLoad])
 
   return (
     <Router>

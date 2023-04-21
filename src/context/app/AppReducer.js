@@ -4,6 +4,7 @@ import {
   DELETE_TASK,
   SET_LOADING,
   UPDATE_TASK,
+  SAVE_TASKS,
 } from '../types'
 
 const Reducer = (state, action) => {
@@ -11,7 +12,9 @@ const Reducer = (state, action) => {
     case GET_TASKS:
       return {
         ...state,
-        tasks: action.payload,
+        tasks: localStorage.getItem('tasks')
+          ? JSON.parse(localStorage.getItem('tasks'))
+          : [],
         loading: false,
       }
     case ADD_TASK:
@@ -40,6 +43,13 @@ const Reducer = (state, action) => {
       return {
         ...state,
         loading: true,
+      }
+
+    case SAVE_TASKS:
+      localStorage.setItem('tasks', JSON.stringify(state.tasks))
+      return {
+        ...state,
+        loading: false,
       }
     default:
       return state

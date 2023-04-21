@@ -10,6 +10,7 @@ import {
   DELETE_TASK,
   SET_LOADING,
   UPDATE_TASK,
+  SAVE_TASKS,
 } from '../types'
 
 const AppState = (props) => {
@@ -24,13 +25,8 @@ const AppState = (props) => {
   const getTasks = async () => {
     setLoading()
 
-    const tasksFromStorage = localStorage.getItem('tasks')
-      ? JSON.parse(localStorage.getItem('tasks'))
-      : []
-
     dispatch({
       type: GET_TASKS,
-      payload: tasksFromStorage,
     })
   }
 
@@ -53,12 +49,20 @@ const AppState = (props) => {
     })
   }
 
-  const updateTask = async (id) => {
+  const updateTask = (id) => {
     setLoading()
 
     dispatch({
       type: UPDATE_TASK,
       payload: id,
+    })
+  }
+
+  const saveTasks = () => {
+    setLoading()
+
+    dispatch({
+      type: SAVE_TASKS,
     })
   }
 
@@ -76,6 +80,7 @@ const AppState = (props) => {
         addTask,
         deleteTask,
         updateTask,
+        saveTasks,
       }}
     >
       {props.children}
