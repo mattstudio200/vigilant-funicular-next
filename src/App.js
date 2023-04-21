@@ -65,7 +65,6 @@ function App() {
         showAddTask={showAddTask}
       />
       {showAddTask && <AddTaskForm onAddTask={addTask} />}
-
       {tasks.length ? (
         <Tasks
           tasks={tasks}
