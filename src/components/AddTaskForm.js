@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import FlashMessage from '../components/FlashMessage'
+import AppContext from '../context/app/appContext'
 
-const AddTaskForm = ({ onAddTask }) => {
+const AddTaskForm = () => {
+  const appContext = useContext(AppContext)
+  const { addTask } = appContext
+
   const [text, setText] = useState('')
   const [day, setDay] = useState('')
   const [message, setMessage] = useState(null)
@@ -25,7 +29,7 @@ const AddTaskForm = ({ onAddTask }) => {
       return
     }
 
-    onAddTask({ text, day, reminder })
+    addTask({ text, day, reminder })
     setText('')
     setDay('')
     setReminder(false)
