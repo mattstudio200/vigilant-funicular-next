@@ -21,7 +21,7 @@ const AddTaskForm = ({ onAddTask }) => {
     e.preventDefault()
 
     if (!text) {
-      setMessageAndType('Please add a task', 'error', 100000)
+      setMessageAndType('Please add a task', 'error', 3000)
       return
     }
 
@@ -29,7 +29,7 @@ const AddTaskForm = ({ onAddTask }) => {
     setText('')
     setDay('')
     setReminder(false)
-    setMessageAndType('Task created', 'success', 100000)
+    setMessageAndType('Task created', 'success', 3000)
   }
 
   return (
