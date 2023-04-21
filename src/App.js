@@ -5,20 +5,35 @@ import AddTaskForm from './components/AddTaskForm'
 import { v4 as uuid4 } from 'uuid'
 
 function App() {
-  const localStorageTasksName = 'tasks'
   const [showAddTask, setShowAddTask] = useState(false)
 
-  const localStorageTasks = localStorage.getItem(localStorageTasksName)
-    ? JSON.parse(localStorage.getItem(localStorageTasksName))
-    : []
+  const localStorageTasksName = 'tasks'
 
-  const [tasks, setTasks] = useState(localStorageTasks)
+  const [tasks, setTasks] = useState([])
+  const [initLoad, setInitLoad] = useState(true)
+
+  // componentDidMount
+  useEffect(() => {
+    const updateInitLoad = () => {
+      setInitLoad(false)
+    }
+    const tasksFromLocalStorage = getTasksFromLocalStorage()
+    setTasks(tasksFromLocalStorage)
+    updateInitLoad()
+  }, [])
+
+  const getTasksFromLocalStorage = () =>
+    localStorage.getItem(localStorageTasksName)
+      ? JSON.parse(localStorage.getItem(localStorageTasksName))
+      : []
 
   // // componentDidUpdate
   useEffect(() => {
-    // Your code here
-    localStorage.setItem(localStorageTasksName, JSON.stringify(tasks))
-  }, [tasks])
+    // Only update after init load
+    if (!initLoad) {
+      localStorage.setItem(localStorageTasksName, JSON.stringify(tasks))
+    }
+  }, [tasks, initLoad])
 
   // Add Task
   const addTask = (task) => {
