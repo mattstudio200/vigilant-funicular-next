@@ -8,14 +8,9 @@ import Layout from '@/components/Layout'
 
 const AboutPage = () => {
   const appContext = useContext(AppContext)
-  const { showAddTask, setShowAddTask } = appContext
   return (
     <Layout>
-      <Header
-        title="Task Tracker"
-        onAdd={setShowAddTask}
-        showAddTask={showAddTask}
-      />
+      <Header title="Task Tracker Next" />
       <About />
     </Layout>
   )

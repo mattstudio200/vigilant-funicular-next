@@ -34,7 +34,7 @@ export default function Home() {
   }, [tasks, initLoad])
   return (
     <Layout>
-      <Header title="Task Tracker" />
+      <Header title="Task Tracker Next" />
       <>
         {showAddTask && <AddTaskForm />}
         {tasks.length ? <Tasks tasks={tasks} /> : <h3>No Tasks</h3>}
