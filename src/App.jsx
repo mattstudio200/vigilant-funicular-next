@@ -38,7 +38,6 @@ function App() {
 
   return (
     <Router>
-      <Routes></Routes>
       <div className="container">
         <Header
           title="Task Tracker"
