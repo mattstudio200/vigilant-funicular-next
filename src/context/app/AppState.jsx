@@ -11,15 +11,14 @@ import {
   SET_LOADING,
   UPDATE_TASK,
   SAVE_TASKS,
-  SET_INIT_LOAD
+  SET_SHOW_ADD_TASK,
 } from '../types'
 
 const AppState = (props) => {
   const initalState = {
     tasks: [],
     showAddTask: false,
-    loading: false,
-    initLoad: true
+    loading: false
   }
 
   const [state, dispatch] = useReducer(AppReducer, initalState)
@@ -73,9 +72,9 @@ const AppState = (props) => {
       type: SET_LOADING,
     })
 
-  const setInitLoad = () =>
+  const setShowAddTask = () =>
     dispatch({
-      type: SET_INIT_LOAD,
+      type: SET_SHOW_ADD_TASK,
     })
 
   return (
@@ -83,13 +82,13 @@ const AppState = (props) => {
       value={{
         tasks: state.tasks,
         loading: state.loading,
-        initLoad: state.initLoad,
-        setInitLoad,
+        showAddTask: state.showAddTask,
         getTasks,
         addTask,
         deleteTask,
         updateTask,
         saveTasks,
+        setShowAddTask,
       }}
     >
       {props.children}
