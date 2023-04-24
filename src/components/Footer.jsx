@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
+import { useRouter } from "next/router";
 
 const Footer = () => {
+  const router = useRouter();
   return (
     <footer>
       <p>Copyright &copy; {new Date().getFullYear()}</p>
-      <Link to="/about">About</Link>
+      <Link href="/about" as='/about'>About</Link>
     </footer>
   )
 }
