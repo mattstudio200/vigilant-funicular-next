@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <p>Copyright &copy; {new Date().getFullYear()}</p>
-      <Link href="/about" as='/about'>About</Link>
+      <Link href={"/about"}>About</Link>
     </footer>
   )
 }

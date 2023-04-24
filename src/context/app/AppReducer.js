@@ -5,6 +5,7 @@ import {
   SET_LOADING,
   UPDATE_TASK,
   SAVE_TASKS,
+  SET_INIT_LOAD,
 } from '../types'
 
 const Reducer = (state, action) => {
@@ -44,7 +45,11 @@ const Reducer = (state, action) => {
         ...state,
         loading: true,
       }
-
+    case SET_INIT_LOAD:
+      return {
+        ...state,
+        initLoad: false,
+      }
     case SAVE_TASKS:
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
       return {

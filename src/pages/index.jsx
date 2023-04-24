@@ -15,6 +15,7 @@ export default function Home() {
   const [showAddTask, setShowAddTask] = useState(false)
 
   const [initLoad, setInitLoad] = useState(true)
+  
 
   // componentDidMount
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Home() {
     if (!initLoad) {
       saveTasks()
     }
-  }, [saveTasks, initLoad])
+  }, [tasks, initLoad])
   return (
     <>
       <Head>

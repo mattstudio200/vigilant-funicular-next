@@ -11,6 +11,7 @@ import {
   SET_LOADING,
   UPDATE_TASK,
   SAVE_TASKS,
+  SET_INIT_LOAD
 } from '../types'
 
 const AppState = (props) => {
@@ -18,6 +19,7 @@ const AppState = (props) => {
     tasks: [],
     showAddTask: false,
     loading: false,
+    initLoad: true
   }
 
   const [state, dispatch] = useReducer(AppReducer, initalState)
@@ -71,11 +73,18 @@ const AppState = (props) => {
       type: SET_LOADING,
     })
 
+  const setInitLoad = () =>
+    dispatch({
+      type: SET_INIT_LOAD,
+    })
+
   return (
     <AppContext.Provider
       value={{
         tasks: state.tasks,
         loading: state.loading,
+        initLoad: state.initLoad,
+        setInitLoad,
         getTasks,
         addTask,
         deleteTask,
